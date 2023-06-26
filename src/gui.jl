@@ -158,7 +158,7 @@ function reset_plot(gui::Gui)
     points_y = Observable(Point2f[])
     points_z = Observable(Point2f[])
 
-    x_range = 20
+    x_range = 1000
 
     on(points_x) do point
         x_right_limit = last(points_x.val)[1][1]

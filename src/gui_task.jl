@@ -21,12 +21,13 @@ function gui_task_func(data_channel::Channel)
 
 
 
-        for i in 1:1:count
+        for i in 1:count
 
 
             sample::GyroData = take!(data_channel)
 
-            println("Index :", i)
+            # println("Index :", i)
+            println("Timestamp: ", sample.timestamp)
 
             # println("Data received :", sample.ẋ)
 
