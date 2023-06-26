@@ -26,14 +26,14 @@ function gui_task_func(data_channel::Channel)
 
             sample::GyroData = take!(data_channel)
 
-            print("Index :", i)
+            println("Index :", i)
 
             # println("Data received :", sample.ẋ)
 
             # println("plotting data")
             plot_gyro(gui_data, i, sample)
 
-            sleep(1 / fps)
+            # sleep(1 / fps)
         end
 
 

@@ -27,7 +27,7 @@ function socket_task_func(data_channel::Channel)
                 break
             end
 
-            println("Data received:", msg)
+            # println("Data received:", msg)
 
             # push data to data buffer
             put!(data_channel, msg)
