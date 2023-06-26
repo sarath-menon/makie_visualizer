@@ -9,7 +9,7 @@ function selv()
 end
 
 
-function setup()::Task
+function setup(data_channel::Channel)::Task
     gui_task = @task begin
 
         ## initialize the gui

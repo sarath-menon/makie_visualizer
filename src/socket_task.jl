@@ -9,7 +9,7 @@ using Serialization
 # socket_profile = socket_udp.socket_init()
 # socket_udp.recdata()
 
-function setup()::Task
+function setup(data_channel::Channel)::Task
     socket_task = @task begin
         # @tspawnat 2 begin
 
