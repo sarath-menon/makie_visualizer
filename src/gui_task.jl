@@ -1,14 +1,18 @@
 using GLMakie
 # using gui
 
+module gui_task
+
 include("gui.jl")
-# import .gui
+import .gui
+
 
 function selv()
     print("sel")
 end
 
-function gui_task()
+
+function setup()::Task
     gui_task = @task begin
 
         ## initialize the gui
@@ -43,4 +47,6 @@ function gui_task()
     end
 
     return gui_task
+end
+
 end

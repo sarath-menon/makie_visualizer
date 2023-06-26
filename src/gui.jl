@@ -1,6 +1,7 @@
 module gui
 
 using GLMakie
+GLMakie.activate!(inline=false)
 
 include("comm_utils.jl")
 
