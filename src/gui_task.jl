@@ -1,6 +1,3 @@
-using GLMakie
-# using gui
-
 module gui_task
 
 include("gui.jl")
