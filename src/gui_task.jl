@@ -1,40 +1,36 @@
-module gui_task
 
 include("gui.jl")
-import .gui
 
+function gui_task_func(data_channel::Channel)
 
-function selv()
-    print("sel")
-end
-
-
-function setup(data_channel::Channel)::Task
-    gui_task = @task begin
+    gui_task = @async begin
 
         ## initialize the gui
-        gui_handle = gui.gui_init()
-        gui_data = gui.reset_plot(gui_handle)
+        gui = gui_init()
+        gui_data = reset_plot(gui)
         fps::Integer = 1000
 
-        display(gui_handle.fig)
+        display(gui.fig)
 
         # # wait for data to become available in the channel
         # wait(data_channel)
 
         duration = 5
-        count = duration * 1000000
+        count = duration * 1000
+        println("Waiting for data in gui:")
 
 
 
-        for i in 1:count
-            println("Waiting for data in gui:")
+        for i in 1:1:count
+
 
             sample::GyroData = take!(data_channel)
 
-            println("Data received $(i) :", sample)
+            print("Index :", i)
 
-            println("plotting data")
+            # println("Data received :", sample.ẋ)
+
+            # println("plotting data")
             plot_gyro(gui_data, i, sample)
 
             sleep(1 / fps)
@@ -44,6 +40,7 @@ function setup(data_channel::Channel)::Task
     end
 
     return gui_task
-end
 
 end
+# end
+

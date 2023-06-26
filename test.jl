@@ -1,18 +1,37 @@
 
 import Pkg;
 Pkg.activate(@__DIR__);
+
+##
+using Revise
+import makie_visualizer
+using DataStructures
+using GLMakie
+using ThreadPools
+
+using Sockets
+using Serialization
+
+
+GLMakie.activate!(inline=false)
 ##
 
-using Revise
+include("src/comm_utils.jl")
+
+
+data_channel = Channel{GyroData}(100);
+
+
+include("src/tasks.jl")
+
+# schedule(socket_task)
+socket_task_func(data_channel)
+
+gui_task = gui_task_func(data_channel)
 
 
 
-# using makie_visualizer
-import makie_visualizer
 
-gui_task = makie_visualizer.gui_task()
-schedule(gui_task)
 
-# gui = gui_init()
-# gui_data = reset_plot(gui)
-# display(gui.fig)
+
+
