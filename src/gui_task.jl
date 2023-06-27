@@ -31,7 +31,7 @@ function gui_task_func(data_channel::Channel)
 
             Core.println("Data received $(sample.timestamp):", sample.gyro.ẋ)
 
-            gui_data.points_x[] = push!(gui_data.points_x[], [i sample.gyro.ẋ])
+            gui_data.points_x[] = push!(gui_data.points_x[], [(i / 1000) sample.gyro.ẋ])
             # gui_data.points_y[] = push!(gui_data.points_y[], [1 sample.gyro.ẏ])
             # gui_data.points_z[] = push!(gui_data.points_z[], [1 sample.gyro.ż])
 
