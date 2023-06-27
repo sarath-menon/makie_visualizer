@@ -27,7 +27,7 @@ function socket_task_func(data_channel::Channel)
                 break
             end
 
-            # println("Data received:", msg)
+            # Core.println("Data received:", msg.timestamp)
 
             # push data to data buffer
             put!(data_channel, msg)

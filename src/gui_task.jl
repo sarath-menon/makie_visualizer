@@ -17,22 +17,26 @@ function gui_task_func(data_channel::Channel)
 
         duration = 5
         count = duration * 1000
-        println("Waiting for data in gui:")
+        Core.println("Waiting for data in gui :")
 
 
 
         for i in 1:count
 
 
-            sample::GyroData = take!(data_channel)
+            sample::ImuData = take!(data_channel)
 
             # println("Index :", i)
-            println("Timestamp: ", sample.timestamp)
+            # Core.println("Timestamp: ", sample.timestamp)
 
-            # println("Data received :", sample.ẋ)
+            Core.println("Data received $(sample.timestamp):", sample.gyro.ẋ)
+
+            gui_data.points_x[] = push!(gui_data.points_x[], [i sample.gyro.ẋ])
+            # gui_data.points_y[] = push!(gui_data.points_y[], [1 sample.gyro.ẏ])
+            # gui_data.points_z[] = push!(gui_data.points_z[], [1 sample.gyro.ż])
 
             # println("plotting data")
-            plot_gyro(gui_data, i, sample)
+            # plot_gyro(gui_data, i, sample.gyro)
 
             # sleep(1 / fps)
         end

@@ -19,7 +19,7 @@ GLMakie.activate!(inline=false)
 include("src/comm_utils.jl")
 
 
-data_channel = Channel{GyroData}(100);
+data_channel = Channel{ImuData}(100);
 
 
 include("src/tasks.jl")
